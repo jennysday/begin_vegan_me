@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+	<!-- typeAliases : 반환형의 별칭 설정 -->
+	<typeAliases>
+		<!-- 
+		<typeAlias alias="qaa" type="com.vegan.user.qaa.biz.QaaBoardVO"/>
+		<typeAlias alias="adminqaa" type="com.vegan.admin.qaa.biz.AdminQaaBoardVO"/>
+		<typeAlias alias="order" type="com.vegan.user.order.biz.OrderBoardVO"/>
+		 -->
+		<typeAlias alias="BasketVO" type="com.vegan.user.vo.BasketVO"/>
+		<typeAlias alias="MemberVO" type="com.vegan.user.vo.MemberVO"/>
+		
+		<typeAlias alias="OrderBoardVO" type="com.vegan.user.vo.OrderBoardVO"/>
+	</typeAliases>
+
+
+	<!-- mappers 설정: 어떤 MyBatis 파일을 읽어갈지 알려줌 -->
+	<mappers>
+		<!-- 
+		<mapper resource="mappings/qaa-mapping.xml"/>
+		<mapper resource="mappings/adminqaa-mapping.xml"/>
+		<mapper resource="mappings/order-mapping.xml"/>
+		 -->
+		<mapper resource="mappings/basket-mapping.xml"/>
+		<mapper resource="mappings/order-mapping.xml"/>
+	</mappers>
+		
+	
+</configuration>

@@ -1,0 +1,169 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+	font-family: 'Malgun Gothic';
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+}
+
+header, section, article, main, nav, aside, footer {
+	display: block;
+}
+
+header:after, section:after, article:after, main:after, nav:after, aside:after,
+	footer:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.clear {
+	clear: both;
+}
+
+ul, ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button{
+	background: inherit ; 
+	border:none; 
+	box-shadow:none; 
+	border-radius:0; 
+	padding:0; 
+	overflow:visible;
+	 cursor:pointer;
+} 
+
+.text_hide {
+	display: inline-block;
+	text-indent: -9999px;
+}
+
+body {
+	font-size: 16px;
+	font-weight: 400;
+	color: #213421;
+}
+
+#together {
+	background-color: #243421;
+	width: 100%; 
+	height: 200px;
+	vertical-align: middle;
+	padding: 20px 0;
+	text-align: center;
+	
+}
+
+#together ul{
+	width:80%; 
+	height:160px;
+	margin:0 auto;
+
+
+
+}
+#together ul li {
+	height: 100px;
+	height:100%;
+	width:28%;
+	background-color:#ffffff;
+	display: inline-block;
+	vertical-align: middle;
+	margin:0 20px;
+	text-align: left;
+	padding:10px;
+	
+}
+
+#category_wrap{
+	width: 73%;
+	margin:0 auto;
+}
+
+#category_wrap #category {
+	width:200px;
+	display:inline-block;
+	padding: 100px 10px;
+}
+
+#category_wrap #category b{
+	height:100px;
+	font-size:30px;
+}
+
+#category_wrap #category table{
+	padding: 50px 0;
+}
+
+#category_wrap #category table tr td{
+	font-weight: bold;
+	line-height: 50px;
+	width:200px;
+}
+
+#category_wrap #category table tr td a {
+  margin-bottom: 10px;
+}
+
+#category_wrap #category table tr td a span {
+  position: relative;
+  font-weight: bold;
+  color: #243421;
+}
+span::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 5px;
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  background: rgba(200, 125, 220, .6);
+}
+a:hover span::after {
+  width: 100%;
+  transition: width .3s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#button { /* input 단추 */
+	width:100%;
+	background-color: #000;
+}
+	
+#button:hover { /* input 단추 hover */
+	background-color: white;
+	color: #213429;
+}

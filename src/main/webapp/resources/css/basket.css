@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+.basket_wrap{
+	padding: 10% 0 20%;
+}
+
+.basket_border{
+	border:1px solid #213421;
+}
+
+.basket_table1{
+	padding-bottom:7%;
+}
+
+.under__line{
+	border-bottom: 2px solid #213421;
+}
+
+.basket_table1 span{
+	font-size:25px;
+}
+
+.basket_foreach{
+	height:100px;
+}
+
+.btn_box{
+	border: 1px solid #ccc;
+	width: 130px;
+	height: 35px;
+	line-height: 35px;
+	border-radius: 5px;
+	vertical-align: top;
+}
+
+input[type="button"]{
+	border:none;
+	cursor: pointer;
+	background:none;
+	line-height: 30px;
+	width:33%;
+	height:30px;
+	font-weight: 600;
+	font-size: 18px;
+	padding:0;
+	transition:all 0.5s;
+	border-radius: 5px;
+}
+
+input[type="button"]:hover{
+	color:#731d09;
+}
+
+.margin_table{
+	margin-top: 50px;
+}
+
+.sum_money{
+	padding-top: 10px;
+	margin-bottom: 10px;
+}
+
+svg:hover{
+	fill:#731d09;
+}
+
+.buy_btn{
+	border-radius: 4px;
+    font-size: 14px;
+    padding: 12px 30px;
+    background-color: #213421;
+    transition: all 0.3s;
+    color:#ffffff;
+}
+
+.buy_btn:hover{
+    background-color: #649E64;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

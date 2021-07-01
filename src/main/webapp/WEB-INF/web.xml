@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+	 http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" 
+	 id="WebApp_ID" version="4.0">
+
+    <!-- 바로 메인으로 이동 -->
+	<welcome-file-list>
+		<welcome-file>main/main.jsp</welcome-file>
+	</welcome-file-list>
+	 
+	 <!-- post 방식 인코딩 처리 필터 -->
+	 <filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+	
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Processes application requests -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>qaaAppServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>qaaAppServlet</servlet-name>
+		<url-pattern>*.qa</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>adminQaaAppServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>adminQaaAppServlet</servlet-name>
+		<url-pattern>*.aq</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>orderQaaAppServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>orderQaaAppServlet</servlet-name>
+		<url-pattern>*.od</url-pattern>
+	</servlet-mapping>	
+	
+	
+	<!-- 지현 -->
+	
+	<servlet>
+		<servlet-name>basketQaaAppServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>basketQaaAppServlet</servlet-name>
+		<url-pattern>*.ba</url-pattern>
+	</servlet-mapping>	
+	
+	
+	
+
+	<!-- 희진 -->
+		<servlet>
+		<servlet-name>memberServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>memberServlet</servlet-name>
+		<url-pattern>*.me</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>communityServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>communityServlet</servlet-name>
+		<url-pattern>*.co</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>adminServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>adminServlet</servlet-name>
+		<url-pattern>*.ad</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- 지은, 경화 -->
+	<servlet>
+		<servlet-name>goodsAppServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>goodsAppServlet</servlet-name>
+		<url-pattern>*.go</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- 임종두 -->
+	
+	<servlet>
+		<servlet-name>faqAppServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>faqAppServlet</servlet-name>
+		<url-pattern>*.fa</url-pattern>
+	</servlet-mapping>
+	
+
+
+	
+
+</web-app>

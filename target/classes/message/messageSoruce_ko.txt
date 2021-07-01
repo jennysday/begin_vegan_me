@@ -1,0 +1,27 @@
+//각 나라별 언어에 대한 소스 파일이다 -messageSource_ko.properties (반드시 파일명은 messageSource_고유 나라명.properties이런식으로 작성해야한다)
+//파일명은 고정값이며 파일의 키값 또한 고정값이다 벨류값에는 해당 나라에 대한 언어로 작성하면 된다
+//프로퍼티스 확장자는 영어가 아닌 다른 언어는 자동으로 인코딩과 디코딩 과정을 거치키 때문에 하늘 파일은 txt 파일에 따로 보관하여
+//어떤 한글이 담겼는지 볼 수 있도록 선생님이 따로 주셨다 
+//프로퍼티스는 =사이에 값들이 공백이 있으면 안된다
+
+# login.jsp  
+message.user.login.title=로그인
+message.user.login.id=아이디
+message.user.login.password=비밀번호
+message.user.login.loginBtn=로그인
+
+message.user.login.language.en=영어
+message.user.login.language.ko=한글
+
+# getBoardList.jsp
+message.board.list.mainTitle=게시글 목록
+message.board.list.welcomeMsg=님! 게시판에 오신걸 환영합니다.
+message.board.list.search.condition.title=제목
+message.board.list.search.condition.content=내용
+message.board.list.search.condition.btn=검색
+message.board.list.table.head.seq=번호
+message.board.list.table.head.title=제목
+message.board.list.table.head.writer=작성자
+message.board.list.table.head.regDate=등록일
+message.board.list.table.head.cnt=조회수
+message.board.list.link.insertBoard=새글 등록

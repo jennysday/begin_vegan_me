@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="orderMapper">
+
+	<select id="getOrderList" resultType="OrderBoardVO">
+		SELECT
+			O.ORDER_NUM		AS order_num,
+			O.ORDER_TRADENUM		AS order_tradenum,
+			O.ORDER_GOODS_NAME	AS order_goods_name,
+			O.ORDER_GOODS_IMAGE		AS order_goods_image,
+			O.ORDER_GOODS_PRICE		AS order_goods_price,
+			O.ORDER_GOODS_COUNT		AS order_goods_count,
+			O.ORDER_MEMBER_ID		AS order_member_id,
+			O.ORDER_SUM_MONEY		AS order_sum_money,
+			O.ORDER_STATUS		AS order_status,
+			O.ORDER_DATE		AS order_date
+		FROM GOODS_ORDER O
+		<if test='id != "admin"'>
+		WHERE O.ORDER_MEMBER_SEQ = #{seq}	
+		</if>
+	</select>
+	
+		
+	<!-- 
+	<select id="getOrderList" resultType="OrderBoardVO">
+	 <![CDATA[
+		SELECT Y.*
+		FROM 
+		(
+			SELECT ROWNUM AS RNUM, X.*
+			FROM
+			(
+			SELECT *
+			FROM OrderBoardVO
+			ORDER BY SEQ DESC
+			) X
+		) Y
+		WHERE Y.RNUM >= #{startIndex} AND Y.RNUM <= #{endIndex}
+		]]>
+	</select>
+	 -->
+	
+	<update id="updateOrderStatus">
+		UPDATE GOODS_ORDER
+		SET ORDER_STATUS = #{order_status}
+		WHERE ORDER_TRADENUM = #{order_tradenum}
+	</update>
+	
+	
+	
+	
+	
+
+</mapper>

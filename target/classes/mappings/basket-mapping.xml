@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="basketMapper">
+
+	<select id="getBasketList" resultType="BasketVO"> <!-- resultType은 반환형 -->
+	<!-- 장바구니는 어떤 회원이 어떤 상품을 담는지 알아야 함 -->
+		SELECT                                      <!-- 이 쿼리문을 통해 샐랙트한 값들이 BasketVO의 자바빈에 필드로 정의되어 있어야 함 -->
+			G.SEQ		    AS goodsSeq,     <!-- 어떤 상품인지 알아야 함 -->
+			B.AMOUNT		AS amount,        <!-- 어떤 상품을 몇개 담았는지 알아야 함 --> 
+			G.NAME			AS goodsName,  <!-- 상품 이름 -->
+			G.IMAGE01			AS image,          <!-- 상품 이미지 --> 
+			G.PRICE			AS price,            <!-- 상품 가격 -->
+			M.NAME			AS memberName,<!-- 관리자 페이지에서 회원 이름을 불러오기 위함 --> 
+			M.ID			    AS memberId,<!-- 관리자 페이지에서 회원 아이디를 불러오기 위함 --> 
+			G.AMOUNT		AS goodsAmount <!-- 장바구니 수량 변경에서 상품 수량만큼 제한 걸기 위함 -->
+		FROM BASKET B
+		
+		JOIN GOODS G ON B.GOODS_SEQ = G.SEQ <!-- JOIN GOODS G : join할 자료형 , on에는 조건울 작성(B.GOODS_SEQ = G.SEQ : B.GOODS_SEQ와 G.SEQ가 같은 애만 조인하겠다) -->
+		JOIN MEMBER M ON B.MEMBER_SEQ = M.SEQ
+		<if test='id != "admin"'> <!-- id가 admin이 아닐 경우 조건문을 걸어 해당 아이디의 자바빈만 가져오도록 함 -->
+			WHERE B.MEMBER_SEQ = #{seq} <!-- 매개변수로 전달해준 memberVO 자료형의 정의된 필드인 seq를 의미 (자바빈과 필드의 이름이 같아야 함) -->
+ 		</if>		
+	</select>
+	
+	<select id="getMember" resultType="MemberVO">
+		SELECT SEQ, ID, NAME
+		FROM MEMBER
+		WHERE SEQ = #{seq}
+	</select>
+	
+	<delete id="deleteBasket">		
+		DELETE FROM BASKET 
+		WHERE GOODS_SEQ = #{goodsSeq} AND MEMBER_SEQ = #{memberSeq}
+	</delete>
+	
+	<insert id="addBasket">
+		INSERT INTO BASKET(MEMBER_SEQ,GOODS_SEQ,AMOUNT,REG_DATE) 
+		VALUES (#{memberSeq},#{goodsSeq},#{amount},SYSDATE)
+	</insert>
+	
+	<select id="getAmount" resultType="Integer">
+		SELECT AMOUNT
+		FROM BASKET
+		WHERE MEMBER_SEQ = #{memberSeq} AND GOODS_SEQ = #{goodsSeq}
+	</select>
+	
+	<update id="updateAmount">
+		UPDATE BASKET SET AMOUNT = #{amount}
+		WHERE GOODS_SEQ = #{goodsSeq} AND MEMBER_SEQ = #{memberSeq} 
+	</update>
+
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- 자바 관련 소스는 src/main으로 옮겨줌.-->
+	
+	<!-- annotation 등록 -->
+	<context:component-scan base-package="com.vegan.*"/>
+	
+	<aop:aspectj-autoproxy/>
+	
+	<!-- 방법2: 직접 주입법 - 보안상 취약함. -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+				destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="scott"/>
+		<property name="password" value="tiger"/>
+	</bean>
+	
+	<!-- Transaction 설정 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- transaction이 적용되어있는 advise -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/><!-- select문 -->
+			<tx:method name="*"/><!-- select문 빼고 commit을 적용해죠 -->
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut id="txPointcut" expression="execution(* com.vegan..impl*(..))" />
+		<aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
+	</aop:config>
+	
+	<!-- Spring과 MyBatis 연동 설정 : 방법1 -->
+	<!-- 빈 객체 설정 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:sql-map-config.xml"/>
+	</bean>
+	
+	<!-- Spring과 MyBatis 연동 설정 : 방법2 -->
+	<!-- 설정 파일에서 다이렉트로 정보를 받음. -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession"/>
+	</bean>
+	
+</beans>
