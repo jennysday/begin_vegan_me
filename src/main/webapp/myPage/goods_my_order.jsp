@@ -4,6 +4,7 @@
 <!-- JSTL 사용 -->
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 	
 <!DOCTYPE html>
 <html>
@@ -105,7 +106,7 @@
 										src="/board/resources/image/${order.order_goods_image}" width=50 height=50>
 								</td>
 								<td>${order.order_goods_count}</td>
-								<td>${order.order_goods_price}<td>
+								 <td><fmt:formatNumber value="${order.order_goods_price * order.order_goods_count}" pattern="#,###" /><td>
 								
 								<div>
 									<div id="order__text__${order.order_tradenum}">

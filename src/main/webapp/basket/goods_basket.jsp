@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!-- JSTL 사용 -->
+<!-- JSTL 사용 -->	
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -102,7 +102,7 @@
 										</div>
 									</td>
 									
-									<td><span id="pr__${basket.goodsSeq}">${basket.price * basket.amount}</span></td>
+									<td><span id="pr__${basket.goodsSeq}"><fmt:formatNumber value="${basket.price * basket.amount}" pattern="#,###"/></span>	</td>
 									
 									<c:if test='${member.id != "admin"}'>
 									<td> <a
