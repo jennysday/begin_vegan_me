@@ -75,9 +75,9 @@ public class OrderController {
 		// @ResponseBody: JAVA VO -> JSON
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 
-		if (memberVO == null || !memberVO.getId().equals("admin")) {
-			respData.put("OK", false);
-		} else {
+		if (memberVO == null || !memberVO.getId().equals("admin")) {//로그인을 하지 않았거나, 관리자가 아닐 경우
+			respData.put("OK", false); 
+		} else {//관리자일 경우
 			
 			orderService.updateOrderStatus(orderBoardVO);
 

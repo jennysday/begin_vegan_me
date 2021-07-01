@@ -133,6 +133,7 @@
 										    <option value="5">주문취소</option>
 										</select>
 										<button class="change__status" data-tradenum="${order.order_tradenum}">변경</button>
+										<!-- data-tradenum="${order.order_tradenum} : 선택한 요소를 가져오기 위해 임의로 만든 속성 -->
 									</div>
 									</c:if>
 								</div>
@@ -174,15 +175,15 @@
 	<script type="text/javascript">
 	
 	$('.change__status').on('click',function(e){
-		e.stopPropagation();
-        e.preventDefault();
+		e.stopPropagation(); //stopPropagation 은 부모태그로의 이벤트 전파를 stop 중지하라는 의미
+        e.preventDefault(); //preventDefault 는 a 태그 처럼 클릭 이벤트 외에 별도의 브라우저 행동을 막기 위해 사용
         
-		var tradeNum = $(this).attr("data-tradenum");
-		var orderStatus = $(this).parent().children(0).val();
+		var tradeNum = $(this).attr("data-tradenum");//선택한 요소의 속성의 값을 가져옴
+		var orderStatus = $(this).parent().children(0).val(); //선택한 요소의 부모의 첫번째 자식의 값 (옵션 선택 값) 
 		
-		var reqData = {};
-		reqData.order_tradenum = tradeNum;
-		reqData.order_status = orderStatus;
+		var reqData = {}; //객체 생성
+		reqData.order_tradenum = tradeNum; 
+		reqData.order_status = orderStatus; 
 		
 		$.ajax({
 			url:'/board/updateOrderStatus.do',
